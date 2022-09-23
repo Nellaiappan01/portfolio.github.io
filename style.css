@@ -6,7 +6,7 @@
 body{
     width: 100vw;
     height: 100vh;
-    background: linear-gradient(to left,rgba(0, 0, 0, 0.235),rgba(0, 0, 0, 0.548)),url(/bg.jpg);
+    background: linear-gradient(to left,rgba(0, 0, 0, 0.235),rgba(0, 0, 0, 0.548)),url(bg.jpg);
     background-size: cover;
     overflow: hidden;
 }
