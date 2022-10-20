@@ -49,3 +49,4 @@ s[1].innerHTML=sec[1];
 }
 
 setInterval(runClock,1000);
+runClock();
