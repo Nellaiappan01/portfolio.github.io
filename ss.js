@@ -64,3 +64,41 @@ function tripchange(){
   
     // Initialize the second dropdown based on the default selection
     populateDropdown2();
+
+    const refreshContainer = document.getElementById("refreshContainer");
+const contentrefresh = document.getElementById("contentrefresh");
+
+let startY = 0;
+let isRefreshing = false;
+
+refreshContainer.addEventListener("touchstart", (e) => {
+    if (contentrefresh.scrollTop === 0) {
+        startY = e.touches[0].clientY;
+        isRefreshing = true;
+    }
+});
+
+refreshContainer.addEventListener("touchmove", (e) => {
+    if (isRefreshing) {
+        const deltaY = e.touches[0].clientY - startY;
+        if (deltaY > 0) {
+            contentrefresh.style.transform = `translateY(${deltaY}px)`;
+            e.preventDefault();
+        }
+    }
+});
+
+refreshContainer.addEventListener("touchend", () => {
+    if (isRefreshing) {
+        contentrefresh.style.transition = "transform 0.3s ease-in-out";
+
+        if (contentrefresh.style.transform !== "") {
+            contentrefresh.style.transform = "translateY(0)";
+        }
+
+        setTimeout(() => {
+            contentrefresh.style.transition = "";
+            isRefreshing = false;
+        }, 300);
+    }
+});
