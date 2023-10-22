@@ -6,10 +6,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./ss.css">
 </head>
-<body>
-  <div id="refreshContainer">
-    <div id="contentrefresh">
-    
+<body> 
     <div class="container">
         <div class="brand-logo"></div>
         <div>
@@ -20,6 +17,14 @@
     
         </div>
         <div class="brand-title">INDUSTRIES PRIVATE LIMITED</div>
+
+        <div style=" width: 100%; height: 20px; margin-top: 3%; margin-left: -13%; position: absolute;" class="word">
+          <div id="scrolltext"> 
+            <span style="font-size: 20px;"><span style="color:blue;">Hire Vechiles Data Entry Form</span>
+          </div>
+        </div>
+
+
         <div class="combained">
 
         <div class="containerr" style="margin-top: 20%;">
@@ -30,28 +35,94 @@
              <label for="month2" class="switch-label switch-label-on">E R F</label>
              <span class="switch-selection"></span>
            </div> </div>
-           <input class="inputss date" type="date" />
+           <input class="inputss date" type="date" required/>
          </div>
-         <select id="travelname" class="partyname inputss " style="margin-top: 10%;">
+         <select id="travelname" class="partyname inputss" style="margin-top: 10%;" onchange="travelnamecheckManualEntry(this.value)">
                 
             <option disabled selected>TRAVELS NAME </option>
-            <option value="Annai">Annai</option>
-            <option value="Sakthi">Sakthi</option>
+            <option value="RAJ">RAJ TRAVELS</option>
+            <option value="SABAPATHY">SABAPATHY TRAVELS</option>
+            <option value="BASKAR">BASKAR TRAVELS</option>
+            <option value="MUTHAIAH">MUTHAIAH TRAVELS</option>
+            <option value="MARY">MARY TRAVELS</option>
+            <option value="ESHWARI">ESHWARI TRAVELS</option>
+            <option value="KAJENDRAN">KAJENDRAN TRAVELS</option>
+            <option value="travelname" style="color: rebeccapurple; font-weight: bold;">Manual Entry</option>
           </select>
-          <select id="vechileno" class="vechileno inputss ">
+          <input type="text" class="inputss" style="margin-top: 10%; display: none;background-color: floralwhite;" id="vechiletypeMaual" placeholder="TRAVEL NAME MANUAL ENTRY">
+
+          <select id="block" class="block inputss " style="margin-top: 10%;" onchange="blockcheckManualEntry(this.value)">            
+            <option disabled selected>BLOCK</option>
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+            <option value="E">E</option>
+            <option value="F">F</option>
+            <option value="G">G</option>
+            <option value="H">H</option>
+            <option value="I">I</option>
+            <option value="L">L</option>
+            <option value="M">M</option>
+            <option value="N">N</option>
+            <option value="Onew">Onew</option>
+            <option value="P 1st Row">P 1st Row</option>
+            <option value="P 2nd Row">P 2nd Row</option>
+            <option value="Q">Q</option>
+            <option value="R">R</option>
+            <option value="S">S</option>
+            <option value="M & N">M & N</option>
+            <option value="M & R">M & R</option>
+            <option value="N & R">N & R</option>
+            <option value="T">T</option>
+            <option value="block" style="color: rebeccapurple; font-weight: bold;">Manual Entry</option>
+
+          </select>
+          <!-- //hidden input -->
+          <input type="text" class="inputss" style="margin-top: 10%; display: none;background-color: floralwhite;" id="blocktypeMaual" placeholder="BLOCK MANUAL ENTRY">
+
+          <select id="vechileno" class="vechileno inputss " onchange="updateInputValuevechiletype()">
             <option>VECHILE NO</option>
           </select> 
+          <!-- //hidden input -->
+          <input  id="vechiletype" class="vechileno inputss " placeholder="TO" style="background-color: floralwhite; display: none;"/>
 
-          <div style="display:flex; justify-content: space-between ; width: 100%;">
-            <select id="from" class="from inputss ">
+          <div id="vechilelabevisble" style="display:none; justify-content: space-between ; width: 100%;">
+
+            <input  id="type01" class="from inputss " placeholder="VECHILE NO " style="background-color: floralwhite; width: 150px;"/> 
+            <input  id="type02" class="from inputss " placeholder="TYPE" style="background-color: floralwhite;width: 100px; "/> 
+         <!-- //hidden input -->
+          </div>
+          
+
+  <div id="labelOutputvechiletype">
+    <p class="labelvechiletype" id="selectedLabelvechiletype">Vechile type</p>
+  </div>
+<img  id="icon" src="./icon.ico" alt="edit">
+  <!-- Add a new input field to display the label -->
+  <input style="display: none;" type="text" id="selectedLabelInputvechileno" class="inputss vechileno" readonly>
+  
+
+          <div id="fromtovisible" style="display:flex; justify-content: space-between ; width: 100%;">
+            <select  id="fromm" class="from inputss " onchange="fromcheckManualEntry(this.value)">
                 
                 <option  disabled selected> FROM</option>
-                <option value="TN 59 AK 7071">Annai Earth Movers </option>
-              </select>  <select id="dropdown" class="to inputss ">
+                <option value="from" style="color: rebeccapurple; font-weight: bold;">Manual Entry</option>
+              </select>  
+         <!-- //hidden input -->
+        
+              <select  id="too" class="to inputss ">
                 <option  disabled selected> TO</option>
-                <option value="TN 59 AK 7071">Annai Earth Movers </option>
               </select> 
+          <!-- //hidden input -->
+
           </div>
+          <div id="fromtohide" style="display:none; justify-content: space-between ; width: 100%;">
+            <input  id="frominput" class="from inputss " placeholder="FROM" style="background-color: floralwhite;"/> 
+         <!-- //hidden input -->
+              <input  id="to" class="to inputss " placeholder="TO" style="background-color: floralwhite;"/>
+          </div>
+
          <div style="display: flex; margin-top: 7%;  ">
         <section >
             <input type="radio" name="styles" id="trip" class="custom-radio trip">
@@ -75,8 +146,7 @@
     <button>SUBMIT</button>
    
     
- </div></div>
-
+ 
 </body>
 <script src="./ss.js">
 
