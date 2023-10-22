@@ -37,8 +37,20 @@ function tripchange(){
   
     // Define options for the second dropdown
     const options = {
-        Annai: ['TN69 BK8538', 'TN54 BK9642', 'TN69 DJ0863'],
-        Sakthi: ['TN69 BX3803', 'TN69 D2686', 'TN69 BB0000'],
+      RAJ : ['TN76 K 3143','TN69 M 8353','TN72 BY 4290','TN37 BH 8646','TN37 CX 0149'],
+
+      SABAPATHY : ['TN75 D 0741','TN69 AJ 4307'],
+      
+      BASKAR :[ 'TN59 AL 6432'],
+      
+      MUTHAIAH :[  'TN69 AC 9513'],
+      
+      MARY :[ 'TN69 M 1677','TN69 AQ 1015'],
+      
+      ESHWARI :['TN69 BA 5922', 'TN34 X 9902', 'TN21 BZ 8215'],
+      
+      KAJENDRAN :['TN72 BF 7998'],
+
     };
   
     // Function to populate the second dropdown
@@ -65,40 +77,144 @@ function tripchange(){
     // Initialize the second dropdown based on the default selection
     populateDropdown2();
 
-    const refreshContainer = document.getElementById("refreshContainer");
-const contentrefresh = document.getElementById("contentrefresh");
+   
+    var dropdownElementvechileno = document.querySelector(".vechileno");
 
-let startY = 0;
-let isRefreshing = false;
+    // Get the text box element using its Class
+    var textBoxElementvechileno = document.getElementById('vechiletype')
+    
+    // Attach an event listener to the dropdown list
+    dropdownElementvechileno.addEventListener("change", function() {
+        // Get the selected option's label
+        var selectedLabelvechileno = dropdownElementvechileno.options[dropdownElementvechileno.selectedIndex].text;
+    
+        // Populate the value of the text box with the selected option's label
+        textBoxElementvechileno.value = selectedLabelvechileno;
+    });
 
-refreshContainer.addEventListener("touchstart", (e) => {
-    if (contentrefresh.scrollTop === 0) {
-        startY = e.touches[0].clientY;
-        isRefreshing = true;
-    }
-});
+    const labelsvechiletype = {
+      // RAJ TRAVELS
+      'TN76 K 3143' : 'Magic',
+      'TN69 M 8353' : 'Magic',
+      'TN72 BY 4290': 'Magic',
+      'TN37 BH 8646': 'Magic',
+      'TN37 CX 0149': 'Magic',
 
-refreshContainer.addEventListener("touchmove", (e) => {
-    if (isRefreshing) {
-        const deltaY = e.touches[0].clientY - startY;
-        if (deltaY > 0) {
-            contentrefresh.style.transform = `translateY(${deltaY}px)`;
-            e.preventDefault();
+      // SABAPATHY TRAVELS
+       'TN75 D 0741': 'AUTO',
+       'TN69 AJ 4307':'AUTO',
+       
+
+      // BASKAR TRAVELS
+       'TN59 AL 6432':'Magic',
+
+      // MUTHAIAH TRAVELS
+       'TN69 AC 9513':'Magic',
+
+      // MARY TRAVELS
+       'TN69 M 1677':'AUTO',
+       'TN69 AQ 1015':'AUTO',
+      
+      // ESHWARI TRAVELS
+       'TN69 BA 5922': 'Magic',
+       'TN34 X 9902': 'Magic',
+       'TN21 BZ 8215': 'Magic',
+    
+      // KAJENDRAN TRAVELS
+       'TN72 BF 7998': 'Magic',
+      };
+
+      const inputField = document.getElementById('vechiletype');
+      const selectedLabelInputvechileno = document.getElementById('selectedLabelInputvechileno');
+      
+      function updateInputValuevechiletype() {
+        const vechileno = document.getElementById('vechileno');
+        const selectedOption = vechileno.options[vechileno.selectedIndex];
+  
+        if (selectedOption) {
+          const selectedValue = selectedOption.value;
+          inputField.value = selectedValue;
+          updateLabel(selectedValue);
         }
-    }
-});
-
-refreshContainer.addEventListener("touchend", () => {
-    if (isRefreshing) {
-        contentrefresh.style.transition = "transform 0.3s ease-in-out";
-
-        if (contentrefresh.style.transform !== "") {
-            contentrefresh.style.transform = "translateY(0)";
+      }
+  
+      function updateLabel(selectedValue) {
+        const labelOutputvechiletype = document.getElementById('selectedLabelvechiletype');
+        if (labelsvechiletype[selectedValue]) {
+          labelOutputvechiletype.textContent = labelsvechiletype[selectedValue];
+          // Update the new input field with the selected label
+          selectedLabelInputvechileno.value = labelsvechiletype[selectedValue];
+        } else {
+          labelOutputvechiletype.textContent = 'Entry';
+          // Clear the new input field if the selected label is not found
+          selectedLabelInputvechileno.value = '';
         }
+      }
+      // Initialize the input field and label
+      updateInputValuevechiletype();
+  
+      
+    // entry manualEntryInput
+    function travelnamecheckManualEntry(selectedValue) {
+      const travelnamemanualEntry =document.querySelector('.partyname');
+        const travelnameoptionmanualEntryInput = document.getElementById('vechiletypeMaual');
 
-        setTimeout(() => {
-            contentrefresh.style.transition = "";
-            isRefreshing = false;
-        }, 300);
+      if (selectedValue === 'travelname') {
+        travelnamemanualEntry.style.display = 'none';
+        travelnameoptionmanualEntryInput.style.display = 'block';
+        travelnamemanualEntry.value = '';
+      } else {
+        travelnamemanualEntry.style.display = 'none';
+        travelnamemanualEntry.style.display = 'block';
+      }
     }
-});
+    
+    function blockcheckManualEntry(selectedValue) {
+      const blocknamemanualEntry =document.getElementById('block');
+        const blocktypeMaual = document.getElementById('blocktypeMaual');
+       
+
+      if (selectedValue === 'block') {
+        blocktypeMaual.style.display = 'block';
+        blocktypeMaual.value = '';
+        blocknamemanualEntry.style.display = 'none';
+      } else {
+        blocknamemanualEntry.style.display = 'block';
+        vechilenotypeMaual.style.display = 'none';
+      }
+    }
+   
+    function fromcheckManualEntry(selectedValue) {
+      const fromm =document.getElementById('fromm')
+      const fromtohide =document.getElementById('fromtohide')
+      const too =document.getElementById('too')
+      
+
+      if (selectedValue === 'from') {
+        fromm.style.display = 'none';
+        too.style.display = 'none';
+        fromtohide.style.display = 'flex';
+        fromtohide.value = '';
+      } else {
+        fromtohide.style.display = 'none';
+        fromm.style.display = 'block';
+        too.style.display = 'block';
+      }
+    }
+    const vechilelabel = document.getElementById('icon')
+    
+    vechilelabel.addEventListener('click',vechilenumedit)
+    function vechilenumedit(){
+      const vechilelabelnumber = document.getElementById('selectedLabelvechiletype')
+      const vechilelabelno = document.getElementById('vechileno')
+      const vechilelabevisble = document.getElementById('vechilelabevisble')
+      const icon = document.getElementById('icon')
+
+      vechilelabelnumber.style.display = 'none';
+      vechilelabelno.style.display = 'none';
+      icon.style.display = 'none';
+      vechilelabevisble.style.display = 'flex';
+
+
+    }
+   
