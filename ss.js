@@ -255,3 +255,13 @@ function formatInputDate(inputDate) {
   const [year, month, day] = inputDate.split('-');
   return `${day}-${month}-${year}`;
 }
+
+
+var too = document.getElementById("too");
+var toinput = document.getElementById("to");
+too.addEventListener("change", function() {
+    var selectedtoo = too.options[too.selectedIndex].text;
+    toinput.value = selectedtoo;
+});
+
+
