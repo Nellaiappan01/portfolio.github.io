@@ -223,7 +223,7 @@ function tripchange(){
 
          
        
-let url ='https://script.google.com/macros/s/AKfycbwnobJp_nmF8rke8wqJl257ItSq6ahSey3nMPMpj_WpUPchmVOX_ckkPR7JXK_l0CUX/exec';
+let url ='https://script.google.com/macros/s/AKfycbz3d8WlGMdYqm9CEipsJoXoxfQ5hts7Eua9E2ymRf8shc6lsLEBSByQWE5yRU99J3pv/exec';
 let form=document.querySelector('#form');
 form.addEventListener("submit",(e)=>{
     e.target.btn.innerHTML="Submitting.....";
