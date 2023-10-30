@@ -218,3 +218,40 @@ function tripchange(){
 
     }
    
+// link googlsheet 
+   
+
+         
+       
+let url ='https://script.google.com/macros/s/AKfycbwnobJp_nmF8rke8wqJl257ItSq6ahSey3nMPMpj_WpUPchmVOX_ckkPR7JXK_l0CUX/exec';
+let form=document.querySelector('#form');
+form.addEventListener("submit",(e)=>{
+    e.target.btn.innerHTML="Submitting.....";
+    let d =new FormData(form);
+    fetch(url,{method:"POST",
+        body:d
+    }).then((res)=>res.text())
+    .then((finalRes)=>{
+        e.target.btn.innerHTML="Submit";
+        document.getElementById("res").innerHTML=finalRes;
+        form.reset();
+         setTimeout(()=>{
+            document.getElementById("res").innerHTML=""; 
+         },3000)        
+    })
+    e.preventDefault();
+})
+
+
+// DATE FORMAT
+
+function formatDate() {
+  const inputDate = document.getElementById("date").value;
+  const formattedDate = formatInputDate(inputDate);
+  document.getElementById("formattedDate").value = formattedDate;
+}
+
+function formatInputDate(inputDate) {
+  const [year, month, day] = inputDate.split('-');
+  return `${day}-${month}-${year}`;
+}
