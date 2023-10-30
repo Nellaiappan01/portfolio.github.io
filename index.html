@@ -35,7 +35,12 @@
              <label for="month2" class="switch-label switch-label-on">E R F</label>
              <span class="switch-selection"></span>
            </div> </div>
-           <input class="inputss date" type="date" required/>
+           <form method="post" id="form">
+            <div id="res" style="color:green;font-size: 18px;"></div>
+
+            <input type="date" id="date" onchange="formatDate()" class="inputss date" required oninvalid="this.setCustomValidity('Please Enter Date!')" oninput="setCustomValidity('')">
+            <!-- DATE hidden input  -->
+           <input id="formattedDate" name="BILLDATE" style="display: none;">  
          </div>
          <select id="travelname" class="partyname inputss" style="margin-top: 10%;" onchange="travelnamecheckManualEntry(this.value)">
                 
@@ -143,9 +148,13 @@
     </div>
       <input class="inputss runkm" type="number" placeholder="   RUN KM"/>
     </div>
-    <button>SUBMIT</button>
-   
-    
+    <button name ="btn" value="Add" type="submit" href="/">Submit</button>
+            
+        
+           
+
+        </form>
+
  
 </body>
 <script src="./ss.js">
