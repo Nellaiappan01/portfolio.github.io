@@ -285,4 +285,8 @@ blockcheck.addEventListener("change", function() {
     var selectedblockcheck = blockcheck.options[blockcheck.selectedIndex].text;
     blockinput.value = selectedblockcheck;
 });
-
+const refreshLink = document.querySelector('.refresh')
+refreshLink.addEventListener('click', function () {
+    // Reload the page
+    location.reload();
+});
