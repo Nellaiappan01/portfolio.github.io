@@ -183,24 +183,32 @@ function tripchange(){
         vechilenotypeMaual.style.display = 'none';
       }
     }
-   
+    const fromm =document.querySelector('.fromcheck')
+    const frominput =document.getElementById('frominput')
+    fromm.addEventListener('change',function() {
+        var selectedfromm = fromm.options[fromm.selectedIndex].text;
+        frominput.value = selectedfromm;
+        
+    });
+    
+
     function fromcheckManualEntry(selectedValue) {
       const fromm =document.getElementById('fromm')
       const fromtohide =document.getElementById('fromtohide')
       const too =document.getElementById('too')
       
 
-      if (selectedValue === 'from') {
+      if (selectedValue === 'fromempty') {
         fromm.style.display = 'none';
         too.style.display = 'none';
         fromtohide.style.display = 'flex';
         fromtohide.value = '';
       } else {
-        fromtohide.style.display = 'none';
         fromm.style.display = 'block';
         too.style.display = 'block';
       }
     }
+    
     const vechilelabel = document.getElementById('icon')
     
     vechilelabel.addEventListener('click',vechilenumedit)
@@ -223,7 +231,7 @@ function tripchange(){
 
          
        
-let url ='https://script.google.com/macros/s/AKfycbz3d8WlGMdYqm9CEipsJoXoxfQ5hts7Eua9E2ymRf8shc6lsLEBSByQWE5yRU99J3pv/exec';
+let url ='https://script.google.com/macros/s/AKfycby5FMcHe_4ieQMnY_2AGXnmjkk1erYvP0W-iq0Cc6685JN4l33VoimjdUmSDSl5gVC1/exec';
 let form=document.querySelector('#form');
 form.addEventListener("submit",(e)=>{
     e.target.btn.innerHTML="Submitting.....";
@@ -264,4 +272,17 @@ too.addEventListener("change", function() {
     toinput.value = selectedtoo;
 });
 
+var partyname = document.querySelector('.partyname')
+var partynameinput = document.querySelector('.partynameinput')
+partyname.addEventListener("change", function() {
+    var selectedpartyname = partyname.options[partyname.selectedIndex].text;
+    partynameinput.value = selectedpartyname;
+});
+
+var blockcheck = document.querySelector('.blockcheck')
+var blockinput = document.querySelector('.blockinput')
+blockcheck.addEventListener("change", function() {
+    var selectedblockcheck = blockcheck.options[blockcheck.selectedIndex].text;
+    blockinput.value = selectedblockcheck;
+});
 
