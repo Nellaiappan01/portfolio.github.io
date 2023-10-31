@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="./ss.css">
+    <link rel="stylesheet" href="./cs.css">
 </head>
 <body> 
     <div class="container">
@@ -54,9 +54,10 @@
             <option value="KAJENDRAN">KAJENDRAN TRAVELS</option>
             <option value="travelname" style="color: rebeccapurple; font-weight: bold;">Manual Entry</option>
           </select>
-          <input type="text" class="inputss" style="margin-top: 10%; display: none;background-color: floralwhite;" id="vechiletypeMaual" placeholder="TRAVEL NAME MANUAL ENTRY">
+          <!-- hidden input -->
+          <input name="TRAVELS" type="text" class="inputss partynameinput" style="margin-top: 10%; display: none; background-color: floralwhite;" id="vechiletypeMaual" placeholder="TRAVEL NAME MANUAL ENTRY">
 
-          <select id="block" class="block inputss " style="margin-top: 10%;" onchange="blockcheckManualEntry(this.value)">            
+          <select id="block" class="block inputss blockcheck " style="margin-top: 10%;" onchange="blockcheckManualEntry(this.value)">            
             <option disabled selected>BLOCK</option>
             <option value="A">A</option>
             <option value="B">B</option>
@@ -84,7 +85,7 @@
 
           </select>
           <!-- //hidden input -->
-          <input type="text" class="inputss" style="margin-top: 10%; display: none;background-color: floralwhite;" id="blocktypeMaual" placeholder="BLOCK MANUAL ENTRY">
+          <input name="BLOCKNO" type="text" class="inputss blockinput" style="margin-top: 10%; display: none;background-color: floralwhite;" id="blocktypeMaual" placeholder="BLOCK MANUAL ENTRY">
 
           <select id="vechileno" class="vechileno inputss " onchange="updateInputValuevechiletype()">
             <option>VECHILE NO</option>
@@ -109,10 +110,11 @@
   
 
           <div id="fromtovisible" style="display:flex; justify-content: space-between ; width: 100%;">
-            <select  id="fromm" class="from inputss " onchange="fromcheckManualEntry(this.value)">
+            <select  id="fromm" class="from inputss fromcheck" onchange="fromcheckManualEntry(this.value)">
                 
                 <option  disabled selected> FROM</option>
-                <option value="from" style="color: rebeccapurple; font-weight: bold;">Manual Entry</option>
+                <option> empty</option>
+                <option value="fromempty" style="color: rebeccapurple; font-weight: bold;">Manual Entry</option>
               </select>  
          <!-- //hidden input -->
         
@@ -124,7 +126,7 @@
 
           </div>
           <div id="fromtohide" style="display:none; justify-content: space-between ; width: 100%;">
-            <input  id="frominput" class="from inputss " placeholder="FROM" style="background-color: floralwhite;"/> 
+            <input name="FROM"  id="frominput" class="from inputss " placeholder="FROM" style="background-color: floralwhite;"/> 
          <!-- //hidden input -->
               <input name ="TO"  id="to" class="to inputss " placeholder="TO" style="background-color: floralwhite;"/>
           </div>
@@ -158,7 +160,7 @@
 
  
 </body>
-<script src="./ss.js">
+<script src="./cc.js">
 
 </script>
 </html>
