@@ -18,6 +18,7 @@ function tripchange(){
 }
     const week2Radio = document.getElementById('week2');
     const month2Radio = document.getElementById('month2');
+    const kmhide = document.querySelector('.kmhide');
     
     week2Radio.addEventListener('change', RadiocolorChange);
     month2Radio.addEventListener('change', RadiocolorChange);
@@ -26,9 +27,13 @@ function tripchange(){
       if (week2Radio.checked) {
         // Handle the "week2" radio button selected
         document.body.style.backgroundColor = 'lightblue';
+        kmhide.style.display = 'none'
+
+
       } else if (month2Radio.checked) {
         // Handle the "month2" radio button selected
         document.body.style.backgroundColor = 'lightgreen';
+        kmhide.style.display = 'block'
       }
     }
 
@@ -231,24 +236,26 @@ function tripchange(){
 
          
        
-let url ='https://script.google.com/macros/s/AKfycby5FMcHe_4ieQMnY_2AGXnmjkk1erYvP0W-iq0Cc6685JN4l33VoimjdUmSDSl5gVC1/exec';
-let form=document.querySelector('#form');
-form.addEventListener("submit",(e)=>{
-    e.target.btn.innerHTML="Submitting.....";
-    let d =new FormData(form);
-    fetch(url,{method:"POST",
-        body:d
-    }).then((res)=>res.text())
-    .then((finalRes)=>{
-        e.target.btn.innerHTML="Submit";
-        document.getElementById("res").innerHTML=finalRes;
+let url = 'https://script.google.com/macros/s/AKfycbzXRUKVD3UtFJkflAYEPnAYoQtPWHNa-Q2PGJ1WJENbilg1tGdP6L92GfWpi50qmbi_/exec';
+function submitForm(button) {
+    button.value = "Submitting.....";
+    let form = document.getElementById('form');
+    let formData = new FormData(form);
+    formData.append("selectedSheet", document.querySelector('input[name="sheet"]:checked').value);
+    fetch(url, {
+        method: "POST",
+        body: formData
+    }).then((res) => res.text())
+    .then((finalRes) => {
+        button.value = "Submit";
+        document.getElementById("res").innerHTML = finalRes;
         form.reset();
-         setTimeout(()=>{
-            document.getElementById("res").innerHTML=""; 
-         },3000)        
-    })
-    e.preventDefault();
-})
+        setTimeout(() => {
+            document.getElementById("res").innerHTML = "";
+        }, 3000);
+    });
+}
+
 
 
 // DATE FORMAT
@@ -290,3 +297,22 @@ refreshLink.addEventListener('click', function () {
     // Reload the page
     location.reload();
 });
+
+
+        // Automatically select "Duplicate" when "Sheet 1" is selected
+        var sheet1 = document.getElementById('week2');
+        var sheet2 = document.getElementById('month2');
+        var duplicate1 = document.getElementById('sheet1');
+        var duplicate2 = document.getElementById('sheet2');
+        sheet1.addEventListener("change", function() {
+            if (sheet1.checked) {
+                duplicate1.checked = true;
+                duplicate2.checked = false;
+            }
+        });
+        sheet2.addEventListener("change", function() {
+            if (sheet2.checked) {
+                duplicate1.checked = false;
+                duplicate2.checked = true;
+            }
+        });
