@@ -111,7 +111,7 @@ body {
   margin-top: 30px;
 }
 
-.inputss, button {
+.inputss, .btn {
   display: block;
   width: 100%;
   padding: 0;
@@ -135,7 +135,7 @@ input::placeholder {
   box-shadow: inset 6px 6px 6px #cbced1, inset -6px -6px 6px white;
 }
 
-button {
+.btn {
   color: white;
   margin-top: 20px;
   background: #1DA1F2;
@@ -147,7 +147,7 @@ button {
   transition: 0.5s;
 }
 
-button:hover {
+.btn:hover {
   box-shadow: none;
 }
 
@@ -360,7 +360,7 @@ h1 {
     width: 120px;
     margin: 10% auto;
 }
-button {
+.btn{
     color: white;
     margin-top: 30px;
     background: #1DA1F2;
@@ -372,7 +372,7 @@ button {
     transition: 0.5s;
     }
     
-    button:hover {
+    .btn:hover {
     box-shadow: none;
     background-color:#0b81f0;
     
