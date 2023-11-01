@@ -25,7 +25,7 @@
           </div>
         </div>
 
-
+         <form method="post" id="form">
         <div class="combained">
         <div class="containerr" style="margin-top: 13%;">
             <div class="switch switch-blue">
@@ -35,7 +35,10 @@
              <label for="month2" class="switch-label switch-label-on">E R F</label>
              <span class="switch-selection"></span>
            </div> </div>
-           <form method="post" id="form">
+           
+           <!-- radiobutton hidden input  -->
+           <input style="display: none;" type="radio" name="sheet" value="sheet1" id="sheet1" checked>
+          <input style="display: none;" type="radio" name="sheet" value="sheet2" id="sheet2">
            
 
             <input type="date" id="date" onchange="formatDate()" class="inputss date" required oninvalid="this.setCustomValidity('Please Enter Date!')" oninput="setCustomValidity('')">
@@ -137,7 +140,7 @@
             <label for="trip" class="radiooo">trip</label>
             
         </section>
-        <section style="margin-left: 32%;">
+        <section class="kmhide"  style="margin-left: 32%; display: none;">
             <input  type="radio" name="styles" id="km" class="custom-radio km">
             <label for="km" class="radiooo">KM</label>
             
@@ -146,13 +149,13 @@
       <input name="AMOUNT" class=" inputss tripclick" type="number" placeholder="                 TRIP AMOUNT"  style="display: none; margin-top: 7%;"/>
       <div class="kmclick" style="display: none;"> 
       <div style="display: flex; justify-content: space-between; margin-top: -2%;">
-      <input class="inputss startkm" type="number" placeholder="START KM"/>
-      <input class="inputss closekm" type="number" placeholder="CLOSE KM"/>
+      <input name="SRTKM" class="inputss startkm" type="number" placeholder="START KM"/>
+      <input name="CLSKM" class="inputss closekm" type="number" placeholder="CLOSE KM"/>
     </div>
-      <input class="inputss runkm" type="number" placeholder="   RUN KM"/>
+      <input name="RUNKM" class="inputss runkm" type="number" placeholder="   RUN KM"/>
     </div>
-    <button name ="btn" value="Add" type="submit" href="/">Submit</button>
-            
+    <input class="btn" type="button" value="Submit" onclick="submitForm(this)">
+      
         
            
 
